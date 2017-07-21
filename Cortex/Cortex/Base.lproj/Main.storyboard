@@ -686,9 +686,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="720" height="468"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DjO-zy-hPi" userLabel="Process Data">
+                                <rect key="frame" x="14" y="420" width="137" height="32"/>
+                                <buttonCell key="cell" type="push" title="Process Data" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nA4-hz-wbY">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="processData:" target="XfG-lQ-9wD" id="TtN-CD-q3U"/>
+                                </connections>
+                            </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Yvb-sU-wAa">
-                                <rect key="frame" x="14" y="420" width="141" height="32"/>
-                                <buttonCell key="cell" type="push" title="Load Storyboard" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="rMv-4B-xk6">
+                                <rect key="frame" x="14" y="420" width="137" height="32"/>
+                                <buttonCell key="cell" type="push" title="Find Storyboard" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="rMv-4B-xk6">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -748,9 +758,13 @@
                             <constraint firstItem="YnL-0Y-U4U" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="460" id="4qr-tX-WDS"/>
                             <constraint firstItem="YnL-0Y-U4U" firstAttribute="top" secondItem="Yvb-sU-wAa" secondAttribute="top" id="B1p-8E-pjR"/>
                             <constraint firstAttribute="trailing" secondItem="YnL-0Y-U4U" secondAttribute="trailing" constant="20" symbolic="YES" id="U30-bh-tUc"/>
+                            <constraint firstItem="DjO-zy-hPi" firstAttribute="top" secondItem="Yvb-sU-wAa" secondAttribute="top" id="VAa-vf-7z3"/>
                             <constraint firstItem="Yvb-sU-wAa" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" symbolic="YES" id="dGw-tC-vKy"/>
+                            <constraint firstItem="DjO-zy-hPi" firstAttribute="leading" secondItem="Yvb-sU-wAa" secondAttribute="leading" id="fgM-Jd-HE0"/>
                             <constraint firstItem="Yvb-sU-wAa" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" symbolic="YES" id="kGO-zh-N89"/>
                             <constraint firstAttribute="bottom" secondItem="YnL-0Y-U4U" secondAttribute="bottom" constant="20" symbolic="YES" id="lo9-iU-Qe2"/>
+                            <constraint firstItem="DjO-zy-hPi" firstAttribute="trailing" secondItem="Yvb-sU-wAa" secondAttribute="trailing" id="p11-lc-uVd"/>
+                            <constraint firstItem="DjO-zy-hPi" firstAttribute="bottom" secondItem="Yvb-sU-wAa" secondAttribute="bottom" id="yWt-hR-d0m"/>
                         </constraints>
                     </view>
                     <connections>

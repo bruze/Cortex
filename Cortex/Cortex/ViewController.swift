@@ -10,8 +10,10 @@ import Cocoa
 
 class ViewController: NSViewController {
     @IBOutlet weak var table: NSTableView!
+    var storeURL = URL(string: "")
     var subViews: [XML] = []
     var rememberThis: XML = XML.init(name: "")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,29 +28,32 @@ class ViewController: NSViewController {
         }
     }
 
+    @IBAction func processData(_ sender: NSButton) {
+        let someThingToPrint = XML.lookChildrenInto(Xml: self.rememberThis, ForTag: "fontDescription", FetchAttrFrom: "color", If: {
+            xml in
+            return xml.parent!.name == "label"
+        })
+        let fPar = FontParser.shared
+        let _ = fPar.parseFonts(From: someThingToPrint, AddToMem: false, AddToDB: storeURL!)
+        //print(someThingToPrint.count)
+    }
     @IBAction func showLoadStoryboardView(_ sender: NSButton) {
         let oPanel = NSOpenPanel.init()
-        var dbURL = URL(string: "")
+        //var dbURL = URL(string: "")
         oPanel.begin { (intResult) in
             if intResult == NSFileHandlingPanelOKButton {
                 do {
-                    dbURL = oPanel.urls[0]
-                    let xmlDoc = try! XMLDocument.init(contentsOf: dbURL!, options: 0)
+                    self.storeURL = oPanel.urls[0]
+                    let xmlDoc = try! XMLDocument.init(contentsOf: oPanel.urls[0], options: 0)
                     let xml = XML(data: xmlDoc.xmlData)
                     self.rememberThis = try! (xml?["#scenes.scene.objects.viewController.view"].getXML())!
-                    let someThingToPrint = XML.lookChildrenInto(Xml: self.rememberThis, ForTag: "fontDescription", FetchAttrFrom: "color", If: {
-                        xml in
-                        return xml.parent!.name == "label"
-                    })
-                    let fPar = FontParser.shared
-                    let _ = fPar.parseFonts(From: someThingToPrint, AddToMem: false, AddToDB: oPanel.urls[0])
-                    //print(someThingToPrint.count)
+                    
                 } catch {
                     print("Failure")
                 }
             }
         }
-        
+        sender.isHidden = true
     }
 
 }

@@ -50,7 +50,7 @@ class FontParser {
             }
             //dbURL.appendingPathComponent(<#T##pathComponent: String##String#>, isDirectory: <#T##Bool#>)
             if amkFound {
-                let success = dic.write(toFile: filePath, atomically: true)
+                let success = dic.write(toFile: filePath + "/amk/" + setName + ".plist", atomically: true)
             }
             
             //
