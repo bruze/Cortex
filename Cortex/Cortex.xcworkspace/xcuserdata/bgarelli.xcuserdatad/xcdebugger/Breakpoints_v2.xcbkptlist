@@ -9,14 +9,46 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Cortex/Support/Parse/FontParser.swift"
-            timestampString = "522284162.905338"
+            filePath = "Cortex/ViewController.swift"
+            timestampString = "523227018.152015"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
-            landmarkName = "parseFonts(From:AddToMem:AddToDB:)"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "processData(_:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Cortex.ViewController.processData (__ObjC.NSButton) -&gt; ()"
+                  moduleName = "Cortex"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bgarelli/Cortex/Cortex/Cortex/ViewController.swift"
+                  timestampString = "523215055.620924"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "48"
+                  endingLineNumber = "48"
+                  offsetFromSymbolStart = "915">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Cortex.ViewController.(processData (__ObjC.NSButton) -&gt; ()).(closure #2)"
+                  moduleName = "Cortex"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bgarelli/Cortex/Cortex/Cortex/ViewController.swift"
+                  timestampString = "523215055.626678"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "49"
+                  endingLineNumber = "49"
+                  offsetFromSymbolStart = "31">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

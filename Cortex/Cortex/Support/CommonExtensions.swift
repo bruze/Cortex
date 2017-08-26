@@ -5,7 +5,6 @@
 //  Created by Bruno Garelli on 6/8/17.
 //  Copyright © 2017 Bruno Garelli. All rights reserved.
 //
-
 import Foundation
 extension Array {
     public func random() -> Element? {
@@ -14,3 +13,4 @@ extension Array {
         return self[index]
     }
 }
+

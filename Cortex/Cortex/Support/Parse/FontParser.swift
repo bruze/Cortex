@@ -5,7 +5,7 @@
 //  Created by Bruno Garelli on 7/15/17.
 //  Copyright © 2017 Bruno Garelli. All rights reserved.
 //
-
+import Cocoa
 import Foundation
 class FontParser {
     static fileprivate let privInstance = FontParser()
@@ -14,28 +14,32 @@ class FontParser {
             return privInstance
         }
     }
-    fileprivate let hold = Holdings()
+    fileprivate var hold = Holdings()
     fileprivate struct Holdings {
         var fontsLoaded: MtxSSany = [:]
+        var amkDir: String = ""
     }
     fileprivate init() {
         //parseFonts(From: [], AddToMem: false, AddToDefDB: false)
     }
-    func parseFonts(From xmls: [XML], AddToMem add2Mem: Bool, AddToDB dbURL: URL) -> (Bool, [MtxSSany]) {
+    func getLastFontsInMemory() -> MtxSSany {
+        return hold.fontsLoaded
+    }
+    func parseFonts(From xmls: [XML], With names: [String] = [], AddToMem add2Mem: Bool, AddToDB dbURL: URL) -> (Bool, MtxSSany) {
         var dbURL = dbURL
         let dic = NSMutableDictionary()
-        var result: [MtxSSany] = []
+        var result: MtxSSany = [:]
         var cnt = 1
         xmls.forEach { (xml) in
             //print(xml.attributes)
-            let setName = xml.name + String(cnt)
-            var matrix: MtxSSany = [:]
+            var setName = xml.name + String(cnt)
+            if !names.isEmpty {
+                setName = names[cnt-1]
+            }
             dic.addEntries(from: /*[setName:*/ xml.attributes/*]*/)
-            matrix[setName] = xml.attributes
-            result.append(matrix)
+            result[setName] = xml.attributes
             cnt += 1
             //
-            print("")
             var filePath = dbURL.path//getFileURL(fileName: setName + ".plist").path!
             let unsaf = UnsafeMutablePointer<ObjCBool>.allocate(capacity: 1)
             unsaf[0] = true
@@ -50,7 +54,12 @@ class FontParser {
             }
             //dbURL.appendingPathComponent(<#T##pathComponent: String##String#>, isDirectory: <#T##Bool#>)
             if amkFound {
-                let success = dic.write(toFile: filePath + "/amk/" + setName + ".plist", atomically: true)
+                hold.amkDir = filePath + "/amk/"
+                let setFilePath = hold.amkDir + setName + ".plist"
+                unsaf[0] = false
+                if !FileManager.default.fileExists(atPath: setFilePath, isDirectory: unsaf) {
+                    let _ = dic.write(toFile: setFilePath, atomically: true)
+                }
             }
             
             //
@@ -58,6 +67,9 @@ class FontParser {
         }
         //let filePath = getFileURL(fileName: "data.plist").path!
         //let success = dic.write(toFile: filePath, atomically: true)
+        if add2Mem {
+            hold.fontsLoaded = result
+        }
         return (true, result)
     }
     func getFileURL(fileName: String) -> NSURL {
@@ -65,6 +77,9 @@ class FontParser {
         let dirURL = try! manager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
         return dirURL.appendingPathComponent(fileName) as NSURL
     }
-    
-    
+    internal func font(From xml: XML) -> NSFont {
+        let size = NSString.init(string: xml.attributes["pointSize"]!).floatValue
+        let result = NSFont.init(name: xml.attributes["name"]!, size: CGFloat(size))
+        return result!
+    }
 }
