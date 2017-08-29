@@ -708,13 +708,13 @@
                                 </connections>
                             </button>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YnL-0Y-U4U">
-                                <rect key="frame" x="460" y="20" width="240" height="428"/>
+                                <rect key="frame" x="460" y="246" width="240" height="202"/>
                                 <clipView key="contentView" id="qPC-us-hQN">
-                                    <rect key="frame" x="1" y="0.0" width="238" height="427"/>
+                                    <rect key="frame" x="1" y="0.0" width="238" height="201"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" headerView="Leu-CZ-Ywg" id="MlL-cY-y98">
-                                            <rect key="frame" x="0.0" y="0.0" width="238" height="404"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="238" height="178"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -764,21 +764,46 @@
                                 <color key="borderColor" red="0.1647058824" green="0.64313725489999995" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="fillColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </box>
+                            <box boxType="custom" borderType="none" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="RVB-eY-Elz" userLabel="SeparationBox">
+                                <rect key="frame" x="461" y="233" width="239" height="3"/>
+                                <view key="contentView" id="ury-WM-8f8">
+                                    <rect key="frame" x="0.0" y="0.0" width="239" height="3"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="3" id="WSD-GX-HXP"/>
+                                </constraints>
+                                <color key="fillColor" name="controlShadowColor" catalog="System" colorSpace="catalog"/>
+                            </box>
+                            <browser verticalHuggingPriority="750" allowsExpansionToolTips="YES" enabled="YES" hasHorizontalScroller="YES" allowsEmptySelection="YES" defaultColumnWidth="100" minColumnWidth="100" titled="YES" separatesColumns="YES" allowsTypeSelect="YES" columnResizingType="auto" translatesAutoresizingMaskIntoConstraints="NO" id="l4l-py-vQe">
+                                <rect key="frame" x="461" y="10" width="239" height="235"/>
+                                <connections>
+                                    <outlet property="delegate" destination="XfG-lQ-9wD" id="2Ra-nE-qcE"/>
+                                </connections>
+                            </browser>
                         </subviews>
                         <constraints>
                             <constraint firstItem="YnL-0Y-U4U" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="460" id="4qr-tX-WDS"/>
+                            <constraint firstItem="l4l-py-vQe" firstAttribute="trailing" secondItem="ury-WM-8f8" secondAttribute="trailing" id="8jw-rC-zkn"/>
                             <constraint firstItem="YnL-0Y-U4U" firstAttribute="top" secondItem="Yvb-sU-wAa" secondAttribute="top" id="B1p-8E-pjR"/>
+                            <constraint firstItem="l4l-py-vQe" firstAttribute="top" secondItem="ury-WM-8f8" secondAttribute="bottom" constant="10" id="F6d-rN-unt"/>
+                            <constraint firstItem="RVB-eY-Elz" firstAttribute="centerY" secondItem="m2S-Jp-Qdl" secondAttribute="centerY" id="IgW-Jw-XkP"/>
+                            <constraint firstItem="RVB-eY-Elz" firstAttribute="leading" secondItem="MlL-cY-y98" secondAttribute="leading" id="Oj9-Sa-MrH"/>
                             <constraint firstAttribute="trailing" secondItem="YnL-0Y-U4U" secondAttribute="trailing" constant="20" symbolic="YES" id="U30-bh-tUc"/>
+                            <constraint firstItem="RVB-eY-Elz" firstAttribute="trailing" secondItem="YnL-0Y-U4U" secondAttribute="trailing" id="URL-VQ-pxy"/>
                             <constraint firstItem="DjO-zy-hPi" firstAttribute="top" secondItem="Yvb-sU-wAa" secondAttribute="top" id="VAa-vf-7z3"/>
+                            <constraint firstItem="l4l-py-vQe" firstAttribute="leading" secondItem="ury-WM-8f8" secondAttribute="leading" id="bAT-eB-2ch"/>
                             <constraint firstItem="Yvb-sU-wAa" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" symbolic="YES" id="dGw-tC-vKy"/>
                             <constraint firstItem="DjO-zy-hPi" firstAttribute="leading" secondItem="Yvb-sU-wAa" secondAttribute="leading" id="fgM-Jd-HE0"/>
                             <constraint firstItem="Yvb-sU-wAa" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" symbolic="YES" id="kGO-zh-N89"/>
-                            <constraint firstAttribute="bottom" secondItem="YnL-0Y-U4U" secondAttribute="bottom" constant="20" symbolic="YES" id="lo9-iU-Qe2"/>
                             <constraint firstItem="DjO-zy-hPi" firstAttribute="trailing" secondItem="Yvb-sU-wAa" secondAttribute="trailing" id="p11-lc-uVd"/>
+                            <constraint firstAttribute="bottom" secondItem="l4l-py-vQe" secondAttribute="bottom" constant="10" id="seG-HI-Vb9"/>
+                            <constraint firstItem="RVB-eY-Elz" firstAttribute="top" secondItem="YnL-0Y-U4U" secondAttribute="bottom" constant="10" id="wuK-Ba-Rvg"/>
                             <constraint firstItem="DjO-zy-hPi" firstAttribute="bottom" secondItem="Yvb-sU-wAa" secondAttribute="bottom" id="yWt-hR-d0m"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="browser" destination="l4l-py-vQe" id="d5o-vk-w7Y"/>
                         <outlet property="previewBox" destination="727-yZ-zzM" id="FIL-ja-wK2"/>
                         <outlet property="table" destination="MlL-cY-y98" id="gqW-4c-SpZ"/>
                     </connections>

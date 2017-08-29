@@ -14,6 +14,10 @@
 		9D1B2A8E1F5124A500CD0D51 /* NSView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1B2A8D1F5124A500CD0D51 /* NSView+Utils.swift */; };
 		9D1B2A911F512A6A00CD0D51 /* LayerBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1B2A901F512A6A00CD0D51 /* LayerBox.swift */; };
 		9D1B2A931F5139CB00CD0D51 /* LayerBox+Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1B2A921F5139CB00CD0D51 /* LayerBox+Preview.swift */; };
+		9D1B2A9A1F51F32F00CD0D51 /* LayerBox+Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1B2A991F51F32F00CD0D51 /* LayerBox+Expression.swift */; };
+		9D1B2A9C1F521BC200CD0D51 /* StoreUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1B2A9B1F521BC200CD0D51 /* StoreUtils.swift */; };
+		9D1B2A9E1F52434200CD0D51 /* URL+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1B2A9D1F52434200CD0D51 /* URL+Utils.swift */; };
+		9D1B2AA01F5243A900CD0D51 /* ViewController+BrowserDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1B2A9F1F5243A900CD0D51 /* ViewController+BrowserDelegate.swift */; };
 		9D224F141EE7023100183B26 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D224F131EE7023100183B26 /* File.swift */; };
 		9D224F161EE72AF500183B26 /* XML+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D224F151EE72AF500183B26 /* XML+Ext.swift */; };
 		9D941F1F1F1AC2CE0043B4CF /* FontParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D941F1E1F1AC2CE0043B4CF /* FontParser.swift */; };
@@ -35,6 +39,10 @@
 		9D1B2A8D1F5124A500CD0D51 /* NSView+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSView+Utils.swift"; path = "Support/Extension/NSView+Utils.swift"; sourceTree = "<group>"; };
 		9D1B2A901F512A6A00CD0D51 /* LayerBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LayerBox.swift; path = LayerBox/LayerBox.swift; sourceTree = "<group>"; };
 		9D1B2A921F5139CB00CD0D51 /* LayerBox+Preview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "LayerBox+Preview.swift"; path = "LayerBox/LayerBox+Preview.swift"; sourceTree = "<group>"; };
+		9D1B2A991F51F32F00CD0D51 /* LayerBox+Expression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "LayerBox+Expression.swift"; path = "LayerBox/LayerBox+Expression.swift"; sourceTree = "<group>"; };
+		9D1B2A9B1F521BC200CD0D51 /* StoreUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StoreUtils.swift; path = Support/Parse/StoreUtils.swift; sourceTree = "<group>"; };
+		9D1B2A9D1F52434200CD0D51 /* URL+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "URL+Utils.swift"; path = "Support/Extension/URL+Utils.swift"; sourceTree = "<group>"; };
+		9D1B2A9F1F5243A900CD0D51 /* ViewController+BrowserDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController+BrowserDelegate.swift"; sourceTree = "<group>"; };
 		9D224F131EE7023100183B26 /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = File.swift; path = Support/XML/File.swift; sourceTree = "<group>"; };
 		9D224F151EE72AF500183B26 /* XML+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "XML+Ext.swift"; path = "Support/XML/XML+Ext.swift"; sourceTree = "<group>"; };
 		9D941F1E1F1AC2CE0043B4CF /* FontParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FontParser.swift; path = Support/Parse/FontParser.swift; sourceTree = "<group>"; };
@@ -85,6 +93,7 @@
 		9D0295DB1EE601EF0033CC67 /* Cortex */ = {
 			isa = PBXGroup;
 			children = (
+				9D1B2A941F51F14C00CD0D51 /* New Group */,
 				9D1B2A8F1F512A4300CD0D51 /* LayerBox */,
 				9D224E8B1EE6E79C00183B26 /* Support */,
 				9D0295DC1EE601EF0033CC67 /* AppDelegate.swift */,
@@ -92,6 +101,7 @@
 				9D0295E01EE601EF0033CC67 /* Assets.xcassets */,
 				9D0295E21EE601EF0033CC67 /* Main.storyboard */,
 				9D0295E51EE601EF0033CC67 /* Info.plist */,
+				9D1B2A9F1F5243A900CD0D51 /* ViewController+BrowserDelegate.swift */,
 			);
 			path = Cortex;
 			sourceTree = "<group>";
@@ -100,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				9D1B2A8D1F5124A500CD0D51 /* NSView+Utils.swift */,
+				9D1B2A9D1F52434200CD0D51 /* URL+Utils.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -109,8 +120,16 @@
 			children = (
 				9D1B2A901F512A6A00CD0D51 /* LayerBox.swift */,
 				9D1B2A921F5139CB00CD0D51 /* LayerBox+Preview.swift */,
+				9D1B2A991F51F32F00CD0D51 /* LayerBox+Expression.swift */,
 			);
 			name = LayerBox;
+			sourceTree = "<group>";
+		};
+		9D1B2A941F51F14C00CD0D51 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "New Group";
 			sourceTree = "<group>";
 		};
 		9D224E8B1EE6E79C00183B26 /* Support */ = {
@@ -140,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				9D941F1E1F1AC2CE0043B4CF /* FontParser.swift */,
+				9D1B2A9B1F521BC200CD0D51 /* StoreUtils.swift */,
 			);
 			name = Parse;
 			sourceTree = "<group>";
@@ -249,13 +269,17 @@
 				9D1B2A911F512A6A00CD0D51 /* LayerBox.swift in Sources */,
 				9D941F211F1ADB2E0043B4CF /* OwnTypes.swift in Sources */,
 				9D224F161EE72AF500183B26 /* XML+Ext.swift in Sources */,
+				9D1B2A9A1F51F32F00CD0D51 /* LayerBox+Expression.swift in Sources */,
 				9D224F141EE7023100183B26 /* File.swift in Sources */,
 				9DE77E781EE9C827005D6E28 /* AssociatedValues.swift in Sources */,
+				9D1B2AA01F5243A900CD0D51 /* ViewController+BrowserDelegate.swift in Sources */,
 				9DE77E7A1EE9D605005D6E28 /* CommonExtensions.swift in Sources */,
 				9D941F231F1C3A860043B4CF /* StaticStrings.swift in Sources */,
 				9D1B2A8E1F5124A500CD0D51 /* NSView+Utils.swift in Sources */,
+				9D1B2A9C1F521BC200CD0D51 /* StoreUtils.swift in Sources */,
 				9D0295DD1EE601EF0033CC67 /* AppDelegate.swift in Sources */,
 				9D1B2A931F5139CB00CD0D51 /* LayerBox+Preview.swift in Sources */,
+				9D1B2A9E1F52434200CD0D51 /* URL+Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

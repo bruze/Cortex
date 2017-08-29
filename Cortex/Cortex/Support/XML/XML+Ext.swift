@@ -47,10 +47,16 @@ extension XML {
         }
         return result
     }
-    internal static func lookChildrenInto(Xml anXml: XML, ForTag aTag: String, FetchAttrFrom siblingTag: String, If meetCond: XMLChk) -> [XML] {
+    internal static func lookChildrenInto(Xml anXml: XML, ForTags tags: [String], FetchAttrFrom siblingTag: String, If meetCond: XMLChk, By keyOrValue: String) -> [XML] {
         var result: [XML] = []
         for child in anXml.children {
-            if child.name == aTag {
+            var checkValue = ""
+            if keyOrValue == "key" {
+                checkValue = child.name
+            } else {
+                checkValue = (child.value != nil) ? child.value! : ""
+            }
+            if /*checkValue == aTag*/tags.contains(checkValue) {
                 guard meetCond(child) else { continue }
                 result.append(child)
                 if let sibling = anXml.children.filter({ (xml) -> Bool in
@@ -60,7 +66,7 @@ extension XML {
                     child.addAttributes(sibling.attributes)
                 }
             } else {
-                result.append(contentsOf: lookChildrenInto(Xml: child, ForTag: aTag, FetchAttrFrom: siblingTag, If: meetCond))
+                result.append(contentsOf: lookChildrenInto(Xml: child, ForTags: tags, FetchAttrFrom: siblingTag, If: meetCond, By: keyOrValue))
             }
         }
         return result

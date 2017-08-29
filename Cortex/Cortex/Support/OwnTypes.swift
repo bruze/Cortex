@@ -14,3 +14,9 @@ typealias MtxSSany = [String: DicSAny]
 //typealias DicSFont = [String: Font]
 //MARK: XML
 typealias XMLChk = (XML)->Bool
+typealias Result = (success: Bool, report: String, object: AnyObject?)
+struct Expression {
+    var name = ""
+    var type = ""
+    var config = DicSAny()
+}

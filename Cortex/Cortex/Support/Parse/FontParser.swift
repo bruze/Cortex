@@ -25,6 +25,9 @@ class FontParser {
     func getLastFontsInMemory() -> MtxSSany {
         return hold.fontsLoaded
     }
+    func getAmkDir() -> String {
+        return hold.amkDir
+    }
     func parseFonts(From xmls: [XML], With names: [String] = [], AddToMem add2Mem: Bool, AddToDB dbURL: URL) -> (Bool, MtxSSany) {
         var dbURL = dbURL
         let dic = NSMutableDictionary()
@@ -40,7 +43,7 @@ class FontParser {
             result[setName] = xml.attributes
             cnt += 1
             //
-            var filePath = dbURL.path//getFileURL(fileName: setName + ".plist").path!
+            /*var filePath = dbURL.path//getFileURL(fileName: setName + ".plist").path!
             let unsaf = UnsafeMutablePointer<ObjCBool>.allocate(capacity: 1)
             unsaf[0] = true
             var amkFound = true
@@ -51,14 +54,18 @@ class FontParser {
                     amkFound = false
                     break
                 }
-            }
+            }*/
+            let seekResult = seekFolder(In: dbURL, Named: "amk")
             //dbURL.appendingPathComponent(<#T##pathComponent: String##String#>, isDirectory: <#T##Bool#>)
-            if amkFound {
-                hold.amkDir = filePath + "/amk/"
-                let setFilePath = hold.amkDir + setName + ".plist"
-                unsaf[0] = false
-                if !FileManager.default.fileExists(atPath: setFilePath, isDirectory: unsaf) {
-                    let _ = dic.write(toFile: setFilePath, atomically: true)
+            if /*amkFound*/seekResult.success {
+                if let filePath = seekResult.object as? String {
+                    hold.amkDir = filePath + "/amk/"
+                    let setFilePath = hold.amkDir + setName + ".plist"
+                    let unsaf = UnsafeMutablePointer<ObjCBool>.allocate(capacity: 1)
+                    unsaf[0] = false
+                    if !FileManager.default.fileExists(atPath: setFilePath, isDirectory: unsaf) {
+                        let _ = dic.write(toFile: setFilePath, atomically: true)
+                    }
                 }
             }
             
@@ -71,6 +78,15 @@ class FontParser {
             hold.fontsLoaded = result
         }
         return (true, result)
+    }
+    func fontFrom(Description data: DicSAny) -> NSFont {
+        var result = NSFont.init()
+        if let sysType = data["type"] as? String, sysType == "system" {
+            result = NSFont.systemFont(ofSize: 20)
+        } else if let fontName = data["name"] as? String {
+            result = NSFont(name: fontName, size: /*String(data["pointSize"])*/20)!
+        }
+        return result
     }
     func getFileURL(fileName: String) -> NSURL {
         let manager = FileManager.default

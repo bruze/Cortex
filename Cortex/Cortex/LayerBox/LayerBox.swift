@@ -22,7 +22,21 @@ class LayerBox: NSBox {
     override func updateLayer() {
         super.updateLayer()
         //layer?.sublayers?.removeAll()
-        
+        if expressions.count > 0 {
+            for expression in expressions {
+                if expression.value.type == "text" {
+                    let textLayer = CATextLayer.init()
+                     textLayer.frame = CGRect.init(origin: CGPoint.zero, size: CGSize.init(width: 100, height: 100))
+                     textLayer.string = "pebete"
+                     textLayer.font = FontParser.shared.fontFrom(Description: expression.value.config)
+                     textLayer.backgroundColor = CGColor.black
+                    layer?.addSublayer(textLayer)
+                }
+                if deleteExpression(By: expression.value.name).success {
+                    
+                }
+            }
+        }
     }
     
 }

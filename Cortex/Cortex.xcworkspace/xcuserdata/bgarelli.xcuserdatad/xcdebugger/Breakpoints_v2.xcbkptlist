@@ -10,45 +10,93 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Cortex/ViewController.swift"
-            timestampString = "523227018.152015"
+            timestampString = "525490018.36745"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
+            landmarkName = "tableViewSelectionDidChange(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Cortex/ViewController.swift"
+            timestampString = "525490009.23453"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "48"
             endingLineNumber = "48"
             landmarkName = "processData(_:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Cortex/ViewController.swift"
+            timestampString = "525492393.268602"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
+            landmarkName = "tableViewSelectionDidChange(_:)"
+            landmarkType = "7">
             <Locations>
                <Location
-                  shouldBeEnabled = "No"
+                  shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "Cortex.ViewController.processData (__ObjC.NSButton) -&gt; ()"
+                  symbolName = "Cortex.ViewController.tableViewSelectionDidChange (Foundation.Notification) -&gt; ()"
                   moduleName = "Cortex"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/bgarelli/Cortex/Cortex/Cortex/ViewController.swift"
-                  timestampString = "523215055.620924"
+                  timestampString = "525492433.662182"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "48"
-                  endingLineNumber = "48"
-                  offsetFromSymbolStart = "915">
+                  startingLineNumber = "109"
+                  endingLineNumber = "109"
+                  offsetFromSymbolStart = "26">
                </Location>
                <Location
-                  shouldBeEnabled = "No"
+                  shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "Cortex.ViewController.(processData (__ObjC.NSButton) -&gt; ()).(closure #2)"
+                  symbolName = "Cortex.ViewController.tableViewSelectionDidChange (Foundation.Notification) -&gt; ()"
                   moduleName = "Cortex"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/bgarelli/Cortex/Cortex/Cortex/ViewController.swift"
-                  timestampString = "523215055.626678"
+                  timestampString = "525492433.664609"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "49"
-                  endingLineNumber = "49"
-                  offsetFromSymbolStart = "31">
+                  startingLineNumber = "109"
+                  endingLineNumber = "109"
+                  offsetFromSymbolStart = "368">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Cortex/ViewController.swift"
+            timestampString = "525492449.702416"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "processData(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

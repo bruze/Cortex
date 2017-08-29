@@ -11,6 +11,7 @@ import Cocoa
 class ViewController: NSViewController {
     @IBOutlet weak var table: NSTableView!
     @IBOutlet weak var previewBox: LayerBox!
+    @IBOutlet weak var browser: NSBrowser!
     
     var storeURL = URL(string: "")
     var subViews: [XML] = []
@@ -31,9 +32,9 @@ class ViewController: NSViewController {
 
     @IBAction func processData(_ sender: NSButton) {
         var fontsNames: [String] = []
-        let someThingToPrint = XML.lookChildrenInto(Xml: self.rememberThis, ForTag: "fontDescription", FetchAttrFrom: "color", If: {
+        let someThingToPrint = XML.lookChildrenInto(Xml: self.rememberThis, ForTags: /*"fontDescription"*/["fontName", "name"], FetchAttrFrom: "color", If: {
             xml in
-            let check = xml.parent!.name == "label"
+            /*let check = xml.parent!.name == "label"
             let configLabel = XML.lookChildrenInto(Xml: xml.parent!, ForTag: "userDefinedRuntimeAttributes", FetchAttrFrom: "StoreID", If: {_ in return true})
             if check && configLabel.count > 0 {
                 if let storeID = configLabel.first?.children.first?.attributes["value"] {
@@ -41,13 +42,14 @@ class ViewController: NSViewController {
                    return true
                 }
             }
-            return false//check
-        })
+            return false//check*/
+            return true
+        }, By: "")
         let fPar = FontParser.shared
         let parsedFonts = fPar.parseFonts(From: someThingToPrint, With: fontsNames, AddToMem: true, AddToDB: storeURL!)
         let flatted: [String] = parsedFonts.1.reduce([]) { (array, matrix) in
             var result = array
-            result.append(matrix.key)
+            result.append(matrix.value as! String)
             return result
         }
         data = flatted
@@ -61,7 +63,8 @@ class ViewController: NSViewController {
                     self.storeURL = oPanel.urls[0]
                     let xmlDoc = try! XMLDocument.init(contentsOf: oPanel.urls[0], options: 0)
                     let xml = XML(data: xmlDoc.xmlData)
-                    self.rememberThis = try! (xml?["#scenes.scene.objects.viewController.view"].getXML())!
+                    /*self.rememberThis = try! (xml?["#scenes.scene.objects.viewController.view"].getXML())!*/
+                    self.rememberThis = xml!
                     
                 } catch {
                     print("Failure")
@@ -107,6 +110,10 @@ extension ViewController: NSTableViewDataSource, NSTableViewDelegate {
             let fonts = FontParser.shared.getLastFontsInMemory()
             if let selection = fonts[data[notifyingTable.selectedRow]] {
                 print(selection)
+                let expression = Expression(name: "labelTest", type: "text", config: selection)
+                if previewBox.add(Expression: expression).success {
+                    browser.loadColumnZero()
+                }
             }
         }
         
