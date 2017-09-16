@@ -31,6 +31,54 @@ class ViewController: NSViewController {
     }
 
     @IBAction func processData(_ sender: NSButton) {
+        if (storeURL?.lastPathComponent.contains(".xcode"))! {
+            let cortex = key.name.cortex
+            let seekResult = seekFolder(In: storeURL!, Named: cortex)
+            if /*amkFound*/seekResult.success {
+                if let filePath = seekResult.object as? String {
+                    print()
+                    let setFilePath = filePath + key.paths.cortex.cortexFolderBothSlash
+                    let unsaf = UnsafeMutablePointer<ObjCBool>.allocate(capacity: 1)
+                    unsaf[0] = false
+                    if !FileManager.default.fileExists(atPath: setFilePath, isDirectory: unsaf) {
+                        //dic.addEntries(from: ["spaces" : ["void": ["": ""]]])
+                        //let _ = dic.write(toFile: setFilePath, atomically: true)
+                        print()
+                    }
+                } else {
+                    print()
+                }
+            } else {
+                print()
+                let setPath = storeURL?.deletingLastPathComponent().appendingPathComponent(key.paths.cortex.cortexFolderHidden, isDirectory: true)
+                do {
+                    try FileManager.default.createDirectory(at: setPath!, withIntermediateDirectories: true, attributes: nil)
+                    
+                    let dic = NSMutableDictionary()
+                    let setFilePath = (setPath?.relativePath)! + key.paths.cortex.cortexConfigFirstSlash
+                    
+                    /*let xml = XML.init(string: setFilePath)
+                    dic.addEntries(from: xml.attributes)
+                    for sub in xml.children {
+                        dic.addEntries(from: sub.attributes)
+                    }*/
+                    dic.addEntries(from: ["spaces" : ["void":["props": ""]]])
+                    let _ = dic.write(toFile: setFilePath, atomically: true)
+                    
+                    /*FileManager.default.createFile(atPath: (setPath?.relativePath)! + key.paths.cortex.cortexConfigFirstSlash, contents: nil, attributes: nil)*/
+                    let alert = NSAlert.init()
+                    alert.messageText = "Cortex started: No previous cortex config found"
+                } catch {
+                    print(error)
+                    let alert = NSAlert.init(error: error)
+                    alert.beginSheetModal(for: view.window!, completionHandler: { (response) in
+                        
+                    })
+                }
+                
+            }
+        }
+        //return
         var fontsNames: [String] = []
         let someThingToPrint = XML.lookChildrenInto(Xml: self.rememberThis, ForTags: /*"fontDescription"*/["fontName", "name"], FetchAttrFrom: "color", If: {
             xml in
@@ -47,12 +95,17 @@ class ViewController: NSViewController {
         }, By: "")
         let fPar = FontParser.shared
         let parsedFonts = fPar.parseFonts(From: someThingToPrint, With: fontsNames, AddToMem: true, AddToDB: storeURL!)
+        let imhere = true
         let flatted: [String] = parsedFonts.1.reduce([]) { (array, matrix) in
             var result = array
-            result.append(matrix.value as! String)
+            result.append(matrix.key)
             return result
         }
         data = flatted
+        print()
+        /*data = someThingToPrint.flatMap({ (xml) -> [String] in
+            
+        })*/
     }
     @IBAction func showLoadStoryboardView(_ sender: NSButton) {
         let oPanel = NSOpenPanel.init()
@@ -63,7 +116,6 @@ class ViewController: NSViewController {
                     self.storeURL = oPanel.urls[0]
                     let xmlDoc = try! XMLDocument.init(contentsOf: oPanel.urls[0], options: 0)
                     let xml = XML(data: xmlDoc.xmlData)
-                    /*self.rememberThis = try! (xml?["#scenes.scene.objects.viewController.view"].getXML())!*/
                     self.rememberThis = xml!
                     
                 } catch {

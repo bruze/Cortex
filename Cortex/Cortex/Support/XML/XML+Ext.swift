@@ -49,6 +49,7 @@ extension XML {
     }
     internal static func lookChildrenInto(Xml anXml: XML, ForTags tags: [String], FetchAttrFrom siblingTag: String, If meetCond: XMLChk, By keyOrValue: String) -> [XML] {
         var result: [XML] = []
+        var counter = 0
         for child in anXml.children {
             var checkValue = ""
             if keyOrValue == "key" {
@@ -58,7 +59,9 @@ extension XML {
             }
             if /*checkValue == aTag*/tags.contains(checkValue) {
                 guard meetCond(child) else { continue }
-                result.append(child)
+                
+                result.append(anXml.children[counter+1])
+                //result.append(child)
                 if let sibling = anXml.children.filter({ (xml) -> Bool in
                     xml.name == siblingTag
                 }).first {
@@ -68,6 +71,7 @@ extension XML {
             } else {
                 result.append(contentsOf: lookChildrenInto(Xml: child, ForTags: tags, FetchAttrFrom: siblingTag, If: meetCond, By: keyOrValue))
             }
+            counter += 1
         }
         return result
     }

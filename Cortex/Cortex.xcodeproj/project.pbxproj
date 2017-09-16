@@ -23,6 +23,8 @@
 		9D941F1F1F1AC2CE0043B4CF /* FontParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D941F1E1F1AC2CE0043B4CF /* FontParser.swift */; };
 		9D941F211F1ADB2E0043B4CF /* OwnTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D941F201F1ADB2E0043B4CF /* OwnTypes.swift */; };
 		9D941F231F1C3A860043B4CF /* StaticStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D941F221F1C3A860043B4CF /* StaticStrings.swift */; };
+		9DA3813B1F676A7C001FE4C7 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA3813A1F676A7C001FE4C7 /* Key.swift */; };
+		9DA3813D1F6783FF001FE4C7 /* Dura.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA3813C1F6783FF001FE4C7 /* Dura.swift */; };
 		9DE77E781EE9C827005D6E28 /* AssociatedValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE77E771EE9C827005D6E28 /* AssociatedValues.swift */; };
 		9DE77E7A1EE9D605005D6E28 /* CommonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE77E791EE9D605005D6E28 /* CommonExtensions.swift */; };
 /* End PBXBuildFile section */
@@ -48,6 +50,8 @@
 		9D941F1E1F1AC2CE0043B4CF /* FontParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FontParser.swift; path = Support/Parse/FontParser.swift; sourceTree = "<group>"; };
 		9D941F201F1ADB2E0043B4CF /* OwnTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OwnTypes.swift; path = Support/OwnTypes.swift; sourceTree = "<group>"; };
 		9D941F221F1C3A860043B4CF /* StaticStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StaticStrings.swift; path = Support/StaticStrings.swift; sourceTree = "<group>"; };
+		9DA3813A1F676A7C001FE4C7 /* Key.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Key.swift; path = Support/Key.swift; sourceTree = "<group>"; };
+		9DA3813C1F6783FF001FE4C7 /* Dura.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Dura.swift; path = Dura/Dura.swift; sourceTree = "<group>"; };
 		9DE77E771EE9C827005D6E28 /* AssociatedValues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AssociatedValues.swift; path = Support/AssociatedValues.swift; sourceTree = "<group>"; };
 		9DE77E791EE9D605005D6E28 /* CommonExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommonExtensions.swift; path = Support/CommonExtensions.swift; sourceTree = "<group>"; };
 		DCA774327E899A464A28EB33 /* Pods_Cortex.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cortex.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,7 +97,7 @@
 		9D0295DB1EE601EF0033CC67 /* Cortex */ = {
 			isa = PBXGroup;
 			children = (
-				9D1B2A941F51F14C00CD0D51 /* New Group */,
+				9D1B2A941F51F14C00CD0D51 /* Dura */,
 				9D1B2A8F1F512A4300CD0D51 /* LayerBox */,
 				9D224E8B1EE6E79C00183B26 /* Support */,
 				9D0295DC1EE601EF0033CC67 /* AppDelegate.swift */,
@@ -125,11 +129,12 @@
 			name = LayerBox;
 			sourceTree = "<group>";
 		};
-		9D1B2A941F51F14C00CD0D51 /* New Group */ = {
+		9D1B2A941F51F14C00CD0D51 /* Dura */ = {
 			isa = PBXGroup;
 			children = (
+				9DA3813C1F6783FF001FE4C7 /* Dura.swift */,
 			);
-			name = "New Group";
+			name = Dura;
 			sourceTree = "<group>";
 		};
 		9D224E8B1EE6E79C00183B26 /* Support */ = {
@@ -142,6 +147,7 @@
 				9DE77E791EE9D605005D6E28 /* CommonExtensions.swift */,
 				9D941F201F1ADB2E0043B4CF /* OwnTypes.swift */,
 				9D941F221F1C3A860043B4CF /* StaticStrings.swift */,
+				9DA3813A1F676A7C001FE4C7 /* Key.swift */,
 			);
 			name = Support;
 			sourceTree = "<group>";
@@ -272,10 +278,12 @@
 				9D1B2A9A1F51F32F00CD0D51 /* LayerBox+Expression.swift in Sources */,
 				9D224F141EE7023100183B26 /* File.swift in Sources */,
 				9DE77E781EE9C827005D6E28 /* AssociatedValues.swift in Sources */,
+				9DA3813B1F676A7C001FE4C7 /* Key.swift in Sources */,
 				9D1B2AA01F5243A900CD0D51 /* ViewController+BrowserDelegate.swift in Sources */,
 				9DE77E7A1EE9D605005D6E28 /* CommonExtensions.swift in Sources */,
 				9D941F231F1C3A860043B4CF /* StaticStrings.swift in Sources */,
 				9D1B2A8E1F5124A500CD0D51 /* NSView+Utils.swift in Sources */,
+				9DA3813D1F6783FF001FE4C7 /* Dura.swift in Sources */,
 				9D1B2A9C1F521BC200CD0D51 /* StoreUtils.swift in Sources */,
 				9D0295DD1EE601EF0033CC67 /* AppDelegate.swift in Sources */,
 				9D1B2A931F5139CB00CD0D51 /* LayerBox+Preview.swift in Sources */,

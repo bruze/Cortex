@@ -18,12 +18,12 @@ func seekFolder(In startPath: URL, Named folderName: String) -> Result {
         startPath = startPath.deletingLastPathComponent()
         filePath = startPath.path
         if startPath.lastPathComponent.characters.count == 1  {
-            //amkFound = false
+            unsaf[0] = false
             result.report = "Directory not found(!)"
             break
         }
     }
     result.object = filePath as AnyObject
-    result.success = true
+    result.success = unsaf[0].boolValue
     return result
 }

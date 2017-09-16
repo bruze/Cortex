@@ -688,7 +688,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DjO-zy-hPi" userLabel="Process Data">
-                                <rect key="frame" x="14" y="420" width="137" height="32"/>
+                                <rect key="frame" x="14" y="420" width="180" height="32"/>
                                 <buttonCell key="cell" type="push" title="Process Data" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nA4-hz-wbY">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -698,8 +698,8 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Yvb-sU-wAa">
-                                <rect key="frame" x="14" y="420" width="137" height="32"/>
-                                <buttonCell key="cell" type="push" title="Find Storyboard" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="rMv-4B-xk6">
+                                <rect key="frame" x="14" y="420" width="180" height="32"/>
+                                <buttonCell key="cell" type="push" title="Find iOS Project Folder" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="rMv-4B-xk6">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
