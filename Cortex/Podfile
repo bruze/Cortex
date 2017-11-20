@@ -8,4 +8,5 @@ target 'Cortex' do
   # Pods for Cortex
   #pod 'FileKit'
   #pod 'AEXML-CU'
+  pod 'ReactiveCocoa', '~> 6.0'
 end

@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import ReactiveCocoa
 
 class ViewController: NSViewController {
     @IBOutlet weak var table: NSTableView!
@@ -19,9 +20,35 @@ class ViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        /*if let window = self.view.window {
+            window.makeFirstResponder(self)
+        }
+        self.becomeFirstResponder()
+        self.view.acceptsTouchEvents = true*/
         // Do any additional setup after loading the view.
         //reload()
+        let man = Manager<Int>(data: [0, 1, 2])
+        print(man)
+        man.add(tagData: ["new" : [3, 4, 5]])
+        let afilter = man.filter(byTag: "new")
+        print(afilter)
+        print(man.remove(tag: "new"))
+        let noid = Noid.init(selector: #selector(ViewController.mouseUp(with:)), objReactive: self)
+        /*noid.eventStarted {
+            print()
+        }
+        let trigger = reactive.trigger(for: /*#selector(ViewController.reload)*/#selector(ViewController.mouseUp(with:)))
+        trigger.observeValues {
+            print()
+        }
+        trigger.attempt {
+            print("attempted")
+        }
+        trigger.observeCompleted {
+            print("observeCompleted")
+        }*/
+        
+        print(afilter)
     }
 
     override var representedObject: Any? {
@@ -80,7 +107,7 @@ class ViewController: NSViewController {
         }
         //return
         var fontsNames: [String] = []
-        let someThingToPrint = XML.lookChildrenInto(Xml: self.rememberThis, ForTags: /*"fontDescription"*/["fontName", "name"], FetchAttrFrom: "color", If: {
+        let someThingToPrint = XML.lookChildrenInto(Xml: self.rememberThis, ForTags: /*"fontDescription"*/["Style"], FetchAttrFrom: "", If: {
             xml in
             /*let check = xml.parent!.name == "label"
             let configLabel = XML.lookChildrenInto(Xml: xml.parent!, ForTag: "userDefinedRuntimeAttributes", FetchAttrFrom: "StoreID", If: {_ in return true})
@@ -92,9 +119,9 @@ class ViewController: NSViewController {
             }
             return false//check*/
             return true
-        }, By: "")
+        }, By: "key")
         let fPar = FontParser.shared
-        let parsedFonts = fPar.parseFonts(From: someThingToPrint, With: fontsNames, AddToMem: true, AddToDB: storeURL!)
+        let parsedFonts = fPar.parseFonts(From: someThingToPrint, AddToMem: true, AddToDB: storeURL!)
         let imhere = true
         let flatted: [String] = parsedFonts.1.reduce([]) { (array, matrix) in
             var result = array
@@ -129,7 +156,7 @@ class ViewController: NSViewController {
 }
 //MARK: TABLE
 extension ViewController: NSTableViewDataSource, NSTableViewDelegate {
-    internal func reload() {
+    @objc internal func reload() {
         //data = [["data1", "data2"], ["pika1", "pika2"]].random()!
         table.reloadData()
     }
@@ -160,13 +187,17 @@ extension ViewController: NSTableViewDataSource, NSTableViewDelegate {
         //print(previewBox.wantsUpdateLayer)
         if let notifyingTable = notification.object as? NSTableView {
             let fonts = FontParser.shared.getLastFontsInMemory()
-            if let selection = fonts[data[notifyingTable.selectedRow]] {
-                print(selection)
-                let expression = Expression(name: "labelTest", type: "text", config: selection)
-                if previewBox.add(Expression: expression).success {
-                    browser.loadColumnZero()
+            if 0..<data.count ~= notifyingTable.selectedRow {
+                if let selection = fonts[data[notifyingTable.selectedRow]] {
+                    //print(selection)
+                    /*let expression = Expression(name: "labelTest", type: "texte", config: selection)*/
+                    let expression = ButtonExpression()
+                    if previewBox.add(Expression: expression).success {
+                        browser.loadColumnZero()
+                    }
                 }
             }
+            
         }
         
         previewBox.layer?.setNeedsDisplay()

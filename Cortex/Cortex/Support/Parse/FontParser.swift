@@ -16,32 +16,36 @@ class FontParser {
     }
     fileprivate var hold = Holdings()
     fileprivate struct Holdings {
-        var fontsLoaded: MtxSSany = [:]
+        var fontsLoaded: MtxSSAny = [:]
         var amkDir: String = ""
     }
     fileprivate init() {
         //parseFonts(From: [], AddToMem: false, AddToDefDB: false)
     }
-    func getLastFontsInMemory() -> MtxSSany {
+    func getLastFontsInMemory() -> MtxSSAny {
         return hold.fontsLoaded
     }
     func getAmkDir() -> String {
         return hold.amkDir
     }
-    func parseFonts(From xmls: [XML], With names: [String] = [], AddToMem add2Mem: Bool, AddToDB dbURL: URL) -> (Bool, MtxSSany) {
+    func parseFonts(From xmls: [XML], /*With names: [String] = [],*/ AddToMem add2Mem: Bool, AddToDB dbURL: URL) -> (Bool, MtxSSAny) {
         var dbURL = dbURL
         let dic = NSMutableDictionary()
-        var result: MtxSSany = [:]
-        var cnt = 1
+        var result: MtxSSAny = [:]
+        //var cnt = 1
         xmls.forEach { (xml) in
             //print(xml.attributes)
-            var setName = xml.name + String(cnt)
-            if !names.isEmpty {
-                setName = names[cnt-1]
+            if let setName = xml.attributes["name"] {
+                let parse = XML.childrenToDict(root: xml)
+                result[setName] = parse//xml.attributes
+                //cnt += 1
             }
-            dic.addEntries(from: /*[setName:*/ xml.attributes/*]*/)
-            result[setName] = xml.attributes
-            cnt += 1
+            /*var setName = xml.name + String(cnt)
+            if !names.isEmpty {
+                setName = //names[cnt-1]
+            }*/
+            //dic.addEntries(from: /*[setName:*/ xml.attributes/*]*/)
+            
             //
             /*var filePath = dbURL.path//getFileURL(fileName: setName + ".plist").path!
             let unsaf = UnsafeMutablePointer<ObjCBool>.allocate(capacity: 1)
@@ -55,6 +59,7 @@ class FontParser {
                     break
                 }
             }*/
+            /*
             let seekResult = seekFolder(In: dbURL, Named: "amk")
             //dbURL.appendingPathComponent(<#T##pathComponent: String##String#>, isDirectory: <#T##Bool#>)
             if /*amkFound*/seekResult.success {
@@ -70,7 +75,7 @@ class FontParser {
             }
             
             //
-            dic.removeAllObjects()
+            dic.removeAllObjects()*/
         }
         //let filePath = getFileURL(fileName: "data.plist").path!
         //let success = dic.write(toFile: filePath, atomically: true)
@@ -80,11 +85,13 @@ class FontParser {
         return (true, result)
     }
     func fontFrom(Description data: DicSAny) -> NSFont {
-        var result = NSFont.init()
-        if let sysType = data["type"] as? String, sysType == "system" {
-            result = NSFont.systemFont(ofSize: 20)
-        } else if let fontName = data["name"] as? String {
-            result = NSFont(name: fontName, size: /*String(data["pointSize"])*/20)!
+        var result = NSFont.systemFont(ofSize: 20)
+        if let sysType = data[key.parser.keyFontFamily] as? String, sysType == key.font.systemFont {
+            //result = NSFont.systemFont(ofSize: 20)
+        } else if let fontName = data[key.parser.keyFontName] as? String {
+            if let font = NSFont(name: fontName, size: /*String(data["pointSize"])*/20) {
+                result = font
+            }
         }
         return result
     }

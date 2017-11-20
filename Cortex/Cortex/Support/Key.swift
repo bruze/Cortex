@@ -8,8 +8,18 @@
 
 //import Foundation
 struct key {
+    struct tag {
+        static let tagAll = "TAG_ALL"
+    }
     struct name {
         static let cortex = "cort"
+    }
+    struct font {
+        static let systemFont = "System"
+    }
+    struct parser {
+        static let keyFontName = "fontName"
+        static let keyFontFamily = "family"
     }
     struct paths {
         struct cortex {

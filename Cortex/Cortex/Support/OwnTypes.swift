@@ -9,14 +9,12 @@
 import Foundation
 
 typealias DicSAny = [String: Any]
-typealias MtxSSany = [String: DicSAny]
+typealias DicSXml = [String: XML]
+typealias MtxSSAny = [String: DicSAny]
+typealias MtxSSXml = [String: DicSXml]
 //MARK: Fonts
 //typealias DicSFont = [String: Font]
 //MARK: XML
 typealias XMLChk = (XML)->Bool
 typealias Result = (success: Bool, report: String, object: AnyObject?)
-struct Expression {
-    var name = ""
-    var type = ""
-    var config = DicSAny()
-}
+

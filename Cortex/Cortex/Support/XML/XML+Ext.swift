@@ -60,7 +60,7 @@ extension XML {
             if /*checkValue == aTag*/tags.contains(checkValue) {
                 guard meetCond(child) else { continue }
                 
-                result.append(anXml.children[counter+1])
+                result.append(anXml.children[counter])
                 //result.append(child)
                 if let sibling = anXml.children.filter({ (xml) -> Bool in
                     xml.name == siblingTag
@@ -72,6 +72,15 @@ extension XML {
                 result.append(contentsOf: lookChildrenInto(Xml: child, ForTags: tags, FetchAttrFrom: siblingTag, If: meetCond, By: keyOrValue))
             }
             counter += 1
+        }
+        return result
+    }
+    static func childrenToDict(root: XML) -> DicSAny {
+        var result: DicSAny = [:]
+        for child in root.children {
+            if let value = child.value {
+                result[child.name] = value
+            }
         }
         return result
     }
